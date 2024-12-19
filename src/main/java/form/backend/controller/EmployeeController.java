@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/api")
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
@@ -18,7 +18,7 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    @PostMapping
+    @PostMapping("/employees")
     public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
         try {
             if (employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
