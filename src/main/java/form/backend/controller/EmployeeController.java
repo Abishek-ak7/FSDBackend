@@ -4,21 +4,12 @@ import form.backend.repository.EmployeeRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import form.backend.model.Employee;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/employees")
-@CrossOrigin(
-    origins = {
-        "http://localhost:3000",
-        "https://fs-dfrontend.vercel.app", 
-        },
-    methods = {
-                RequestMethod.OPTIONS,
-                RequestMethod.GET,
-                RequestMethod.PUT,
-                RequestMethod.DELETE,
-                RequestMethod.POST
-})
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
@@ -43,6 +34,12 @@ public class EmployeeController {
             return ResponseEntity.status(500).body("Internal Server Error: " + e.getMessage());
         }
     }
+
+    @GetMapping("/")
+    public String Home() {
+        return "Hi to the web";
+    }
+    
     
     
 }
