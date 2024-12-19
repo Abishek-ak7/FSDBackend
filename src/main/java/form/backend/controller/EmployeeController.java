@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import form.backend.model.Employee;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/api")
+@CrossOrigin(origins = "https://fs-dfrontend.vercel.app") // Allow React frontend
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
@@ -15,7 +16,7 @@ public class EmployeeController {
         this.employeeRepository = employeeRepository;
     }
 
-    @PostMapping
+    @PostMapping("/employees")
     public ResponseEntity<?> addEmployee(@RequestBody Employee employee) {
         try {
             if (employeeRepository.existsByEmployeeId(employee.getEmployeeId())) {
