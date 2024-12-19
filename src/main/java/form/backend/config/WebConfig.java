@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:3000","https://fs-dfrontend.vercel.app/")
+                .allowedOrigins("http://localhost:3000", "https://fs-dfrontend.vercel.app") // Corrected the trailing slash issue
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
                 .allowCredentials(true);
