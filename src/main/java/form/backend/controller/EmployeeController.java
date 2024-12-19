@@ -7,7 +7,18 @@ import form.backend.model.Employee;
 
 @RestController
 @RequestMapping("/api/employees")
-@CrossOrigin
+@CrossOrigin(
+    origins = {
+        "http://localhost:3000",
+        "https://fs-dfrontend.vercel.app", 
+        },
+    methods = {
+                RequestMethod.OPTIONS,
+                RequestMethod.GET,
+                RequestMethod.PUT,
+                RequestMethod.DELETE,
+                RequestMethod.POST
+})
 public class EmployeeController {
 
     private final EmployeeRepository employeeRepository;
